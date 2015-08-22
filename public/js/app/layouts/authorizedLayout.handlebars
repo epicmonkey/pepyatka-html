@@ -79,8 +79,10 @@
               {{#link-to 'timeline.index' controller.session.currentUser.username (query-params offset=0)}}{{controller.session.currentUser.screenName}}{{/link-to}}
             </div>
             <div>
-              {{#link-to 'settings.index'}}settings{{/link-to}}
-              -
+              {{#unless controller.session.currentUser.isAnonymous}}
+                {{#link-to 'settings.index'}}settings{{/link-to}}
+                -
+              {{/unless}}
               {{#link-to 'session.destroy'}}sign out{{/link-to}}
             </div>
           </div>

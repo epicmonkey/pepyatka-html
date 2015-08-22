@@ -26,6 +26,10 @@ define(['config',
     administrators: DS.hasMany('admin'),
     banIds: DS.attr(),
 
+    isAnonymous: function() {
+      return this.get('username') === 'anonymous'
+    }.property('username'),
+
     isPrivateUser: function() {
       return this.get('isPrivate') === '1'
     }.property('isPrivate'),

@@ -9,7 +9,7 @@ define(["app/app",
 
     isOwner: function() {
       var currentUser = this.get('controller.session.currentUser')
-      if (!currentUser) { return false }
+      if (!currentUser || currentUser.get('isAnonymous')) { return false }
 
       var administrators = currentUser.get('administrators').toArray()
       var username = this.get('controller.content.query')

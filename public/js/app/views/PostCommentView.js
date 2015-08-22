@@ -11,6 +11,10 @@ define(["app/app",
         return false
 
       var userId = this.get('controller.session.currentUser.id')
+
+      if (this.get('controller.session.currentUser.isAnonymous'))
+        return false
+
       var ownerId = this.get('content.model.createdBy.id')
       return userId == ownerId
     }.property('content.model.createdBy')

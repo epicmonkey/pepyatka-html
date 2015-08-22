@@ -61,19 +61,23 @@
                   <a {{action 'sendRequest'}}>Request subscription</a>
                 {{/if}}
               {{else}}
-                {{#if isSubscribed}}
-                  <a {{action 'unsubscribe'}} class="p-subscribe">Unsubscribe</a>
-                {{else}}
-                  <a {{action 'subscribe'}} class="p-unsubscribe">Subscribe</a>
-                {{/if}}
+                {{#unless controller.session.currentUser.isAnonymous}}
+                  {{#if isSubscribed}}
+                    <a {{action 'unsubscribe'}} class="p-subscribe">Unsubscribe</a>
+                  {{else}}
+                    <a {{action 'subscribe'}} class="p-unsubscribe">Subscribe</a>
+                  {{/if}}
+                {{/unless}}
               {{/if}}
             {{/if}}
           </div>
           {{#unless isSubscribed}}
             {{#if view.isTimelineIndex}}
-              <div class="col-md-5 block-controls">
-                <a {{action 'ban'}}>Block this user</a>
-              </div>
+              {{#unless controller.session.currentUser.isAnonymous}}
+                <div class="col-md-5 block-controls">
+                  <a {{action 'ban'}}>Block this user</a>
+                </div>
+              {{/unless}}
             {{/if}}
           {{/unless}}
         </div>

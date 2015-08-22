@@ -76,12 +76,14 @@
           {{/if}}
 
           {{#if view.parentView.parentView.isRiverOfNews}}
-            -
-            {{#if post.model.canHide}}
-              <a {{action 'hide'}} class="p-timeline-post-hide-action">Hide</a>
-            {{else}}
-              <a {{action 'unhide'}} class="p-timeline-post-unhide-action">Un-hide</a>
-            {{/if}}
+            {{#unless controller.session.currentUser.isAnonymous}}
+              -
+              {{#if post.model.canHide}}
+                <a {{action 'hide'}} class="p-timeline-post-hide-action">Hide</a>
+              {{else}}
+                <a {{action 'unhide'}} class="p-timeline-post-unhide-action">Un-hide</a>
+              {{/if}}
+            {{/unless}}
           {{/if}}
 
           {{#if view.isOwner}}

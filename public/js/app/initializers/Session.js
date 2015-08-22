@@ -48,16 +48,11 @@ define(["config", "auth_storage", "app/app"], function(config, auth_storage, App
 
       auth_storage.storeToken(this.get('authToken'))
 
-      if (this.get('authToken')
-        && this.get('authToken').length > 0
-        && this.get('authToken') != 'null')
-        Ember.$.ajax({
-          url: this.resourceUrl,
-          context: this
-        })
-          .then(done, error)
-      else
-        error()
+      Ember.$.ajax({
+        url: this.resourceUrl,
+        context: this
+      })
+        .then(done, error)
     }
   })
 
