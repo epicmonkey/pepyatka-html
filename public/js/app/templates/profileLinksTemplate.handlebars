@@ -61,13 +61,11 @@
                   <a {{action 'sendRequest'}}>Request subscription</a>
                 {{/if}}
               {{else}}
-                {{#unless controller.session.currentUser.isAnonymous}}
-                  {{#if isSubscribed}}
-                    <a {{action 'unsubscribe'}} class="p-subscribe">Unsubscribe</a>
-                  {{else}}
-                    <a {{action 'subscribe'}} class="p-unsubscribe">Subscribe</a>
-                  {{/if}}
-                {{/unless}}
+                {{#if isSubscribed}}
+                  <a {{action 'unsubscribe'}} class="p-subscribe">Unsubscribe</a>
+                {{else}}
+                  <a {{action 'subscribe'}} class="p-unsubscribe">Subscribe</a>
+                {{/if}}
               {{/if}}
             {{/if}}
           </div>
